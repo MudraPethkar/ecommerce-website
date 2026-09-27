@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block title %}Order confirmed · Northstar{% endblock %}{% block content %}<section class="success"><p class="eyebrow">THANK YOU</p><h1>Order #{{ order.id }} confirmed.</h1><p>We'll ship your order to {{ order.shipping_address }}.</p><a class="button" href="{% url 'home' %}">Continue shopping</a></section>{% endblock %}
