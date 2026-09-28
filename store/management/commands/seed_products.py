@@ -3,7 +3,6 @@ from store.models import Category, Product
 
 CATEGORIES = [
     ('Electronics', 'electronics'),
-    ('Beauty', 'beauty'),
     ('Clothes', 'clothes'),
     ('Home Decor', 'home-decor'),
     ('Essentials', 'essentials'),
@@ -14,12 +13,6 @@ PRODUCTS = [
     ('Aurora Headphones', 'aurora-headphones', 'Wireless noise-cancelling headphones with a 30-hour battery.', '79.99', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80', 25, 'electronics'),
     ('Minimal Backpack', 'minimal-backpack', 'A durable everyday backpack with a padded laptop sleeve.', '54.00', 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700&q=80', 18, 'electronics'),
     ('Desk Lamp', 'desk-lamp', 'Warm, adjustable LED light for your workspace.', '32.50', 'https://images.unsplash.com/photo-1565636192335-14c46fa1120f?w=700&q=80', 30, 'electronics'),
-    
-    # Beauty
-    ('Organic Face Cream', 'organic-face-cream', 'Hydrating face cream with natural ingredients for all skin types.', '45.00', 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=700&q=80', 20, 'beauty'),
-    ('Luxury Perfume', 'luxury-perfume', 'Premium eau de parfum with exotic floral notes.', '89.99', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=700&q=80', 15, 'beauty'),
-    ('Hair Care Set', 'hair-care-set', 'Complete shampoo, conditioner, and mask for healthy hair.', '52.00', 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=700&q=80', 22, 'beauty'),
-    ('Makeup Brush Collection', 'makeup-brush-collection', 'Professional 10-piece makeup brush set with soft bristles.', '38.50', 'https://images.unsplash.com/photo-1596462502278-bc52fe00baea?w=700&q=80', 16, 'beauty'),
     
     # Clothes
     ('Everyday Sneakers', 'everyday-sneakers', 'Comfortable low-top sneakers for daily adventures.', '68.00', 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&q=80', 12, 'clothes'),
