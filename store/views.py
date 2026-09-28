@@ -7,7 +7,7 @@ from django.contrib.auth.views import LogoutView
 from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import CheckoutForm, RegisterForm
-from .models import Order, OrderItem, Product
+from .models import Category, Order, OrderItem, Product
 
 
 def cart_data(request):
@@ -24,8 +24,15 @@ def cart_data(request):
 
 
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'store/home.html', {'products': products})
+    category_slug = request.GET.get('category')
+    categories = Category.objects.all()
+    
+    if category_slug:
+        products = Product.objects.filter(category__slug=category_slug)
+    else:
+        products = Product.objects.all()
+    
+    return render(request, 'store/home.html', {'products': products, 'categories': categories, 'selected_category': category_slug})
 
 
 def product_detail(request, slug):

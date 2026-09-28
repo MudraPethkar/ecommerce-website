@@ -1,0 +1,10 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Star shape -->
+  <g fill="#1e2722">
+    <!-- Main star -->
+    <path d="M32 2 L38.5 22 L59 22 L42.75 34 L49.25 54 L32 42 L14.75 54 L21.25 34 L5 22 L25.5 22 Z"/>
+  </g>
+  
+  <!-- Accent circle at center -->
+  <circle cx="32" cy="28" r="4" fill="#d8f36b"/>
+</svg>

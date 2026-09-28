@@ -1,3 +1,39 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}Northstar Store{% endblock %}</title><link rel="stylesheet" href="/static/css/style.css"></head>
-<body><header class="nav"><a class="brand" href="{% url 'home' %}">NORTHSTAR</a><nav><a href="{% url 'home' %}">Shop</a>{% if user.is_authenticated %}<a href="{% url 'orders' %}">My orders</a><form class="inline" action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="link-button">Log out</button></form>{% else %}<a href="{% url 'login' %}">Log in</a><a class="button small" href="{% url 'register' %}">Sign up</a>{% endif %}<a class="cart-link" href="{% url 'cart' %}">Cart</a></nav></header><main>{% for message in messages %}<div class="message">{{ message }}</div>{% endfor %}{% block content %}{% endblock %}</main><footer>© 2026 Northstar Store · Built with Django</footer><script src="/static/js/app.js"></script></body></html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Northstar Store{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="nav">
+        <a class="brand" href="{% url 'home' %}">
+            <img src="/static/images/logo.svg" alt="Northstar" class="logo">
+            <span>NORTHSTAR</span>
+        </a>
+        <nav>
+            <a href="{% url 'home' %}">Shop</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'orders' %}">My orders</a>
+                <form class="inline" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="link-button">Log out</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                <a class="button small" href="{% url 'register' %}">Sign up</a>
+            {% endif %}
+            <a class="cart-link" href="{% url 'cart' %}">Cart</a>
+        </nav>
+    </header>
+    <main>
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>© 2026 Northstar Store · Built with Django</footer>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

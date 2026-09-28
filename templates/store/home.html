@@ -1,1 +1,61 @@
-{% extends 'base.html' %}{% block title %}Shop · Northstar{% endblock %}{% block content %}<section class="hero"><div><p class="eyebrow">CURATED ESSENTIALS</p><h1>Good things,<br><em>made simple.</em></h1><p>Thoughtful products for work, home, and everywhere in between.</p></div></section><section class="section"><div class="section-heading"><h2>Featured products</h2><span>{{ products|length }} products</span></div><div class="grid">{% for product in products %}<article class="card"><a href="{% url 'product_detail' product.slug %}"><img src="{{ product.image_url }}" alt="{{ product.name }}"></a><div class="card-body"><div><h3>{{ product.name }}</h3><p class="muted">{{ product.description|truncatewords:8 }}</p></div><strong>${{ product.price }}</strong><form method="post" action="{% url 'add_to_cart' product.id %}">{% csrf_token %}<input type="hidden" name="next" value="{% url 'home' %}"><button class="button">Add to cart</button></form></div></article>{% empty %}<p>No products yet. Run <code>python manage.py seed_products</code>.</p>{% endfor %}</div></section>{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Shop · Northstar{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">CURATED ESSENTIALS</p>
+        <h1>Good things,<br><em>made simple.</em></h1>
+        <p>Thoughtful products for work, home, and everywhere in between.</p>
+    </div>
+</section>
+
+<div class="section-container">
+    <aside class="sidebar">
+        <h3>Categories</h3>
+        <ul class="category-list">
+            <li>
+                <a href="{% url 'home' %}" class="category-link {% if not selected_category %}active{% endif %}">
+                    All Products
+                </a>
+            </li>
+            {% for category in categories %}
+                <li>
+                    <a href="?category={{ category.slug }}" class="category-link {% if selected_category == category.slug %}active{% endif %}">
+                        {{ category.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <section class="section">
+        <div class="section-heading">
+            <h2>Featured products</h2>
+            <span>{{ products|length }} products</span>
+        </div>
+        <div class="grid">
+            {% for product in products %}
+                <article class="card">
+                    <a href="{% url 'product_detail' product.slug %}">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                    </a>
+                    <div class="card-body">
+                        <div>
+                            <h3>{{ product.name }}</h3>
+                            <p class="muted">{{ product.description|truncatewords:8 }}</p>
+                        </div>
+                        <strong>${{ product.price }}</strong>
+                        <form method="post" action="{% url 'add_to_cart' product.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{% url 'home' %}">
+                            <button class="button">Add to cart</button>
+                        </form>
+                    </div>
+                </article>
+            {% empty %}
+                <p>No products yet. Run <code>python manage.py seed_products</code>.</p>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}
